@@ -1,0 +1,22 @@
+package LuQ.Music_hall.enums;
+
+public enum TipoMusicista {
+    CANTANTE,
+    CHITARRISTA,
+    BASSISTA,
+    BATTERISTA,
+    TASTIERISTA,
+    VIOLINISTA,
+    FLAUTISTA,
+    PIANISTA,
+    SAXOFONISTA,
+    TROMBETTISTA,
+    VIOLONCELLISTA,
+    CONTRABBASSISTA,
+    DJ,
+    PERCUSSIONISTA,
+    CORISTA,
+    PRODUCER,
+    COMPOSITORE,
+    ARRANGIATORE
+}
