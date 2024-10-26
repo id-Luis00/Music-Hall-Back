@@ -25,6 +25,7 @@ public record NewUtenteDTO(
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
         LocalDate dataDiNascita,
         @ValidTipoMusicista
-        String tipoMusicista
+        String tipoMusicista,
+        String imageURL
 ) {
 }

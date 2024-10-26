@@ -3,8 +3,7 @@ package LuQ.Music_hall.controller;
 
 import LuQ.Music_hall.entities.Utente;
 import LuQ.Music_hall.payloads.AddToFavouritesDTO;
-import LuQ.Music_hall.payloads.UtenteLoginRespDTO;
-import LuQ.Music_hall.services.SalaService;
+import LuQ.Music_hall.payloads.NewUtenteDTO;
 import LuQ.Music_hall.services.UtenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/utenti")
@@ -32,6 +33,18 @@ public class UtenteController {
     @GetMapping("/me")
     public Utente findByToken(@AuthenticationPrincipal Utente utenteAutenticato) {
         return utenteAutenticato;
+    }
+
+    // endpoint per modificare account
+    @PutMapping("{idUtente}")
+    public void findAndUpdate(@PathVariable UUID idUtente, @RequestBody NewUtenteDTO body) {
+        this.utenteService.findAndUpdate(idUtente, body);
+    }
+
+    // endpoint per modificare account
+    @DeleteMapping("{idUtente}")
+    public void findAndDelete(@PathVariable UUID idUtente) {
+        this.utenteService.findAndDelete(idUtente);
     }
 
     // endpoint per inserire sala ai preferiti

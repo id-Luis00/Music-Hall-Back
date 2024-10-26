@@ -8,7 +8,6 @@ import LuQ.Music_hall.exceptions.NotFoundException;
 import LuQ.Music_hall.payloads.NewSalaDTO;
 import LuQ.Music_hall.payloads.NewSalaRespDTO;
 import LuQ.Music_hall.repositories.SalaRepository;
-import LuQ.Music_hall.repositories.UtenteRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

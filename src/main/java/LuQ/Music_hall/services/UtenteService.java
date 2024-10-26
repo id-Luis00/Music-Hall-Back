@@ -19,6 +19,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -167,6 +168,27 @@ public class UtenteService {
     // trova utente per id
     public Utente findById (String id) {
         return this.utenteRepository.findById(UUID.fromString(id)).orElseThrow(() -> new NotFoundException("Utente non  trovato, con id: " + id));
+    }
+
+    //
+    public Utente findAndUpdate(UUID idUtente, NewUtenteDTO body) {
+        // cerco l'utente
+        Utente utenteFound = this.findById(String.valueOf(idUtente));
+
+        Optional.ofNullable(body.nome()).ifPresent(utenteFound::setNome);
+        Optional.ofNullable(body.cognome()).ifPresent(utenteFound::setCognome);
+        Optional.ofNullable(body.username()).ifPresent(utenteFound::setUsername);
+        Optional.ofNullable(body.email()).ifPresent(utenteFound::setEmail);
+        Optional.ofNullable(body.password()).ifPresent(utenteFound::setPassword);
+        Optional.ofNullable(body.dataDiNascita()).ifPresent(utenteFound::setDataDiNascita);
+        utenteFound.setTipoMusicista(TipoMusicista.valueOf(body.tipoMusicista()));
+
+        return utenteFound;
+    }
+
+    public void findAndDelete(UUID idUtente) {
+        Utente utente = this.findById(String.valueOf(idUtente));
+        this.utenteRepository.delete(utente);
     }
 
     // metodo per aggiungere una sala ai preferiti
