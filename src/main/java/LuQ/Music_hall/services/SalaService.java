@@ -99,8 +99,8 @@ public class SalaService {
         return this.salaRepository.findAll(pageable);
     }
 
-    public void findAndDeleteSala(String nomeSala){
-        Sala sala = this.findSala(nomeSala);
+    public void findAndDeleteSala(UUID idSala){
+        Sala sala = this.findById(String.valueOf(idSala));
         this.salaRepository.delete(sala);
     }
 

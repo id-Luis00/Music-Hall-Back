@@ -7,7 +7,6 @@ import LuQ.Music_hall.payloads.NewUtenteDTO;
 import LuQ.Music_hall.services.UtenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

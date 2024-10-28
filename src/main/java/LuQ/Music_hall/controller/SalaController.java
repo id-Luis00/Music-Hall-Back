@@ -100,14 +100,15 @@ public class SalaController {
     }
 
     @PutMapping("/{idSala}")
+    @PreAuthorize("hasAnyAuthority('PROPRIETARIO')")
     public void findAndUpdate(@PathVariable UUID idSala, @RequestBody NewSalaDTO body) {
         this.salaService.findAndUpdate(idSala, body);
     }
 
-//    @DeleteMapping("/{idSala}")
-//    @PreAuthorize("hasAnyAuthority('PROPRIETARIO')")
-//    public void findAndDeleteSala(@PathVariable UUID idSala) {
-//        this.salaService.findAndDeleteSala(nomeSala);
-//    }
+    @DeleteMapping("/{idSala}")
+    @PreAuthorize("hasAnyAuthority('PROPRIETARIO')")
+    public void findAndDeleteSala(@PathVariable UUID idSala) {
+        this.salaService.findAndDeleteSala(idSala);
+    }
 
 }
